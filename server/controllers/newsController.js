@@ -16,17 +16,19 @@ exports.analyzeNews = async (req, res) => {
       messages: [
         {
           role: 'user',
-          content: `Analyze this news and return ONLY a JSON object with these exact fields:
+         content: `Analyze this news and return ONLY a JSON object:
 {
   "verdict": "REAL" or "FAKE",
-  "confidence": number between 0-100,
+  "confidence": 95,
   "explanation": "2-3 line reason",
   "sources": ["url1", "url2"]
 }
 
+Important: confidence must be a number between 60-99, never 0.
+
 News: ${text}
 
-Return ONLY the JSON object, nothing else.`
+Return ONLY JSON, nothing else.`
         }
       ],
       temperature: 0.1,
@@ -49,6 +51,24 @@ Return ONLY the JSON object, nothing else.`
 
   } catch (error) {
     console.error('Error:', error.message);
+    res.status(500).json({ error: error.message });
+  }
+};
+
+exports.getHistory = async (req, res) => {
+  try {
+    const history = await News.find().sort({ createdAt: -1 }).limit(20);
+    res.status(200).json(history);
+  } catch (error) {
+    res.status(500).json({ error: error.message });
+  }
+};
+
+exports.deleteHistory = async (req, res) => {
+  try {
+    await News.findByIdAndDelete(req.params.id);
+    res.status(200).json({ message: 'Deleted successfully' });
+  } catch (error) {
     res.status(500).json({ error: error.message });
   }
 };

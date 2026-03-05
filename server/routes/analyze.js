@@ -1,20 +1,10 @@
 const express = require('express');
 const router = express.Router();
-const { analyzeNews } = require('../controllers/newsController');
+const { analyzeNews, getHistory, deleteHistory } = require('../controllers/newsController');
 
 router.post('/analyze', analyzeNews);
+router.get('/history', getHistory);
+router.delete('/history/:id', deleteHistory);
 
 module.exports = router;
-
-// ## ✅ Final Folder Structure Check
-
-// server/
-// ├── controllers/
-// │   └── newsController.js  
-// ├── models/
-// │   └── News.js            
-// ├── routes/
-// │   └── analyze.js         
-// ├── .env                   
-// ├── index.js               
-// └── package.json           
+          
