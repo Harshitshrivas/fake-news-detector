@@ -6,9 +6,6 @@ An AI-powered MERN stack web application that analyzes news articles and determi
 - **Frontend:** https://fake-news-detector-8w9y.vercel.app
 - **Backend:** https://fake-news-detector-of3b.onrender.com
 
-## 🖼️ Screenshots
-> Add screenshots here
-
 ## ✨ Features
 - 🤖 AI-powered fake news detection using Groq (LLaMA 3.1)
 - 📊 Confidence score with visual progress bar
