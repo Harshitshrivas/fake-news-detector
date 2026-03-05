@@ -18,7 +18,7 @@ const Home = () => {
     setResult(null);
 
     try {
-      const res = await axios.post('http://localhost:5000/api/analyze', { text });
+      const res = await axios.post('https://fake-news-detector-of3b.onrender.com/api/analyze', { text });
       setResult(res.data);
     } catch (err) {
       setError('Something went wrong. Please try again!');

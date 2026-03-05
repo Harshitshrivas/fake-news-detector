@@ -11,7 +11,7 @@ const History = () => {
 
   const fetchHistory = async () => {
     try {
-      const res = await axios.get('http://localhost:5000/api/history');
+      const res = await axios.get('https://fake-news-detector-of3b.onrender.com/api/history');
       setHistory(res.data);
     } catch (err) {
       console.error(err);
@@ -22,7 +22,7 @@ const History = () => {
 
   const handleDelete = async (id) => {
     try {
-      await axios.delete(`http://localhost:5000/api/history/${id}`);
+      await axios.delete(`https://fake-news-detector-of3b.onrender.com/api/history/${id}`);
       setHistory(history.filter(item => item._id !== id));
     } catch (err) {
       console.error(err);
